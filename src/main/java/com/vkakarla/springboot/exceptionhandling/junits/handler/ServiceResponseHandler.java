@@ -18,7 +18,7 @@ public class ServiceResponseHandler {
 		return new ResponseEntity<>(ServiceResponse, status);
 	}
 
-	public ResponseEntity<ServiceResponse> buildResponseEntity(Object data, HttpStatus status) {
+	public ResponseEntity<Object> buildSuccessResponseEntity(Object data, HttpStatus status) {
 		ServiceResponse ServiceResponse = new ServiceResponse();
 		ServiceResponse.setStatus(status);
 		ServiceResponse.setData(data);

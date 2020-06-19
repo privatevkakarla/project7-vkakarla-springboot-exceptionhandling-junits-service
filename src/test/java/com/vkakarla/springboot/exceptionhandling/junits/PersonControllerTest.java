@@ -1,6 +1,7 @@
 package com.vkakarla.springboot.exceptionhandling.junits;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -27,6 +28,7 @@ import com.vkakarla.springboot.exceptionhandling.junits.controller.PersonControl
 import com.vkakarla.springboot.exceptionhandling.junits.dto.ServiceException;
 import com.vkakarla.springboot.exceptionhandling.junits.dto.ServiceResponse;
 import com.vkakarla.springboot.exceptionhandling.junits.entities.Person;
+import com.vkakarla.springboot.exceptionhandling.junits.handler.ServiceResponseHandler;
 import com.vkakarla.springboot.exceptionhandling.junits.repository.PersonRepository;
 import com.vkakarla.springboot.exceptionhandling.junits.serviceImpl.PersonService;
 
@@ -45,6 +47,13 @@ public class  PersonControllerTest {
 
 	@MockBean
 	private PersonRepository personRepository;
+	
+	@Autowired
+	ServiceResponseHandler serviceResponseHandler;
+	
+	@Autowired
+	ServiceResponse serviceResponse;
+	
 
 	@Autowired 
 	ObjectMapper objectMapper;
@@ -56,7 +65,8 @@ public class  PersonControllerTest {
 
 
 
-	@Test public void given_ValidSSN_When_Calling_PersonBySSN_Then_Return_PersonDetasils()
+	@Test 
+	public void given_ValidSSN_When_Calling_PersonBySSN_Then_Return_PersonDetasils()
 			throws IOException {
 
 		try {
@@ -67,7 +77,7 @@ public class  PersonControllerTest {
 
 			when(personRepository.getPersonBySSN((long) 12345)).thenReturn(personresponse);
 
-			ResponseEntity<ServiceResponse> response = personController.getPersonBySSN(12345);
+			ResponseEntity<Object> response = personController.getPersonBySSN(12345);
 			assertNotNull(response);
 			assertEquals(HttpStatus.OK, response.getStatusCode());
 
@@ -83,21 +93,48 @@ public class  PersonControllerTest {
 
 		try {
 			Person personresponse = null;
+			ServiceResponse serviceResponse = null;
 
-			String personString = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("testdata/personDetailsBySSNResponse.json"), "UTF-8");
+			Person personActualResponse = null;
+
+			String personString = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("testdata/personDetailsBySSNResponse.json"),"UTF-8");
 			personresponse = objectMapper.readValue(personString, new TypeReference<Person>() {});
 
 			when(personRepository.getPersonByPersonId("12345")).thenReturn(personresponse);
 
-			ResponseEntity<ServiceResponse> response = personController.getPerson("12345");
+			ResponseEntity<Object> response = personController.getPerson("12345");
+
+			serviceResponse = (ServiceResponse) response.getBody();
+			personActualResponse = (Person) serviceResponse.getData();
+
 			assertNotNull(response);
 			assertEquals(HttpStatus.OK, response.getStatusCode());
 
+			assertEquals("12345", personActualResponse.getPersonId());
+			assertEquals("Martin@gmail.com", personActualResponse.getEmail());
+
 		} catch (ServiceException e) { // TODO Auto-generated catch block
+			fail();
 			e.printStackTrace();
 		}
 
 	}
 
+	
+	@Test 
+	public void given_InValidSSN_When_Calling_PersonBySSN_Then_Return_Exception()
+			throws IOException {
+
+		try {
+
+			ResponseEntity<Object> response = personController.getPersonBySSN(0);
+			fail();
+
+		} catch (ServiceException ex) { 
+			assertEquals("SERVICE_001",ex.getErrorCode().name());
+		}
+
+	}
+	
 
 }

@@ -1,8 +1,8 @@
-{ 
-   "dateOfBirth":"12/12/1985",
-   "email":"veer@gmail.com",
-   "firstName":"veera",
-   "lastName":"veera",
+{
    "personId":"12345",
-   "ssn":null
+   "firstName":"Martin",
+   "lastName":"Martin",
+   "dateOfBirth":"12/12/1985",
+   "email":"Martin@gmail.com",
+   "ssn":9876
 }

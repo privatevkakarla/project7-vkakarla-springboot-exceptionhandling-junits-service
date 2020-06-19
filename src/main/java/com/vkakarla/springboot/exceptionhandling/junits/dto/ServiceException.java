@@ -10,9 +10,9 @@ public class ServiceException extends RuntimeException {
 
 	private ErrorCode errorCode;
 	
-	private String shortMessage;
+	private String shortMessage;      
 	
-	private String detailedMessage;
+	private String detailedMessage; 
 	
     private HttpStatus status;
 	

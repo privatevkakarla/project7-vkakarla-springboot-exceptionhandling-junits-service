@@ -28,10 +28,9 @@ public class PersonService implements IPersonService {
 
 		} catch (ServiceException ex) {
 			throw ex;
-		}
-
-		catch (Exception ex) {
+		}catch (Exception ex) {
 			ServiceException px = new ServiceException(ErrorCode.SERVICE_004);
+			
 			throw px;
 		}
 

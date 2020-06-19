@@ -11,6 +11,7 @@ public class PersonRequestValidationUtil {
 	
 	
 		public void verifyPersonId(String personId) throws ServiceException{
+			
 			 if (StringUtils.isEmpty(personId) || personId.equals("undefined") || personId.equals("{personId}")) {
 				 throw new ServiceException(ErrorCode.SERVICE_001, new Object[] {personId});
 			 }
