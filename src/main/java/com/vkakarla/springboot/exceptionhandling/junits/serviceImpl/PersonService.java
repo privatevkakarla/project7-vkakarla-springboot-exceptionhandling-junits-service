@@ -3,9 +3,9 @@ package com.vkakarla.springboot.exceptionhandling.junits.serviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.vkakarla.springboot.exceptionhandling.junits.apierror.ErrorCode;
-import com.vkakarla.springboot.exceptionhandling.junits.dto.ServiceException;
 import com.vkakarla.springboot.exceptionhandling.junits.entities.Person;
+import com.vkakarla.springboot.exceptionhandling.junits.exception.ErrorCode;
+import com.vkakarla.springboot.exceptionhandling.junits.exception.ServiceException;
 import com.vkakarla.springboot.exceptionhandling.junits.repository.PersonRepository;
 import com.vkakarla.springboot.exceptionhandling.junits.service.IPersonService;
 

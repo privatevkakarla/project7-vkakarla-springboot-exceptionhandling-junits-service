@@ -3,8 +3,8 @@ package com.vkakarla.springboot.exceptionhandling.junits.utils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
-import com.vkakarla.springboot.exceptionhandling.junits.apierror.ErrorCode;
-import com.vkakarla.springboot.exceptionhandling.junits.dto.ServiceException;
+import com.vkakarla.springboot.exceptionhandling.junits.exception.ErrorCode;
+import com.vkakarla.springboot.exceptionhandling.junits.exception.ServiceException;
 
 @Component
 public class PersonRequestValidationUtil {

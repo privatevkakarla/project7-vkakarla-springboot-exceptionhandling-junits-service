@@ -1,4 +1,4 @@
-package com.vkakarla.springboot.exceptionhandling.junits.apierror;
+package com.vkakarla.springboot.exceptionhandling.junits.exception;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

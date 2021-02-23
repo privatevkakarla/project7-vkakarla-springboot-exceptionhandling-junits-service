@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.vkakarla.springboot.exceptionhandling.junits.apierror.ErrorMessageGenerator;
-import com.vkakarla.springboot.exceptionhandling.junits.apierror.ServiceError;
-import com.vkakarla.springboot.exceptionhandling.junits.dto.ServiceException;
+import com.vkakarla.springboot.exceptionhandling.junits.exception.ErrorMessageGenerator;
+import com.vkakarla.springboot.exceptionhandling.junits.exception.ServiceError;
+import com.vkakarla.springboot.exceptionhandling.junits.exception.ServiceException;
 
 import lombok.extern.slf4j.Slf4j;
 

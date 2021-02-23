@@ -1,8 +1,6 @@
-package com.vkakarla.springboot.exceptionhandling.junits.dto;
+package com.vkakarla.springboot.exceptionhandling.junits.exception;
 
 import org.springframework.http.HttpStatus;
-
-import com.vkakarla.springboot.exceptionhandling.junits.apierror.ErrorCode;
 
 public class ServiceException extends RuntimeException {
 

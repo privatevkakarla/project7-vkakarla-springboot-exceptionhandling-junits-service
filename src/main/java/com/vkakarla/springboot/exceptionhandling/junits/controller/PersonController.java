@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vkakarla.springboot.exceptionhandling.junits.dto.ServiceException;
 import com.vkakarla.springboot.exceptionhandling.junits.entities.Person;
+import com.vkakarla.springboot.exceptionhandling.junits.exception.ServiceException;
 import com.vkakarla.springboot.exceptionhandling.junits.serviceImpl.PersonService;
 import com.vkakarla.springboot.exceptionhandling.junits.utils.PersonRequestValidationUtil;
 

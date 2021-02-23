@@ -1,7 +1,7 @@
 package com.vkakarla.springboot.exceptionhandling.junits.service;
 
-import com.vkakarla.springboot.exceptionhandling.junits.dto.ServiceException;
 import com.vkakarla.springboot.exceptionhandling.junits.entities.Person;
+import com.vkakarla.springboot.exceptionhandling.junits.exception.ServiceException;
 
 public interface IPersonService {
 

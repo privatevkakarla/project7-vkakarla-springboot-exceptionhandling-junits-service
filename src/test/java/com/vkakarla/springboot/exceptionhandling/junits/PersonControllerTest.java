@@ -25,8 +25,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vkakarla.springboot.exceptionhandling.junits.application.ExceptionHandlingAndJunitsApplication;
 import com.vkakarla.springboot.exceptionhandling.junits.controller.PersonController;
-import com.vkakarla.springboot.exceptionhandling.junits.dto.ServiceException;
 import com.vkakarla.springboot.exceptionhandling.junits.entities.Person;
+import com.vkakarla.springboot.exceptionhandling.junits.exception.ServiceException;
 import com.vkakarla.springboot.exceptionhandling.junits.repository.PersonRepository;
 import com.vkakarla.springboot.exceptionhandling.junits.serviceImpl.PersonService;
 
