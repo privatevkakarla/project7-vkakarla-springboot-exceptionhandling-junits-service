@@ -19,17 +19,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ServiceExceptionHandler extends ResponseEntityExceptionHandler {
 
-	@Autowired
-	ServiceResponseHandler responseHandler;
+	
 	
 	@Autowired
 	ErrorMessageGenerator errorMessageGenerator;
 	
-	
-	
 	@ExceptionHandler(ServiceException.class)
 	protected ResponseEntity<Object> handleunknownException(ServiceException serviceException) {
-		
 		
 		ServiceError serviceError = new ServiceError();
 		serviceException = errorMessageGenerator.generateError(serviceException);
@@ -37,7 +33,7 @@ public class ServiceExceptionHandler extends ResponseEntityExceptionHandler {
 		serviceError.setMessage(serviceException.getShortMessage());
 		serviceError.setDebugMessage(serviceException.getDetailedMessage());
 		
-		return responseHandler.buildErrorResponseEntity(serviceError, serviceException.getStatus());
+		return new ResponseEntity<Object>(serviceError, serviceException.getStatus());
 
 	}
 

@@ -26,9 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vkakarla.springboot.exceptionhandling.junits.application.ExceptionHandlingAndJunitsApplication;
 import com.vkakarla.springboot.exceptionhandling.junits.controller.PersonController;
 import com.vkakarla.springboot.exceptionhandling.junits.dto.ServiceException;
-import com.vkakarla.springboot.exceptionhandling.junits.dto.ServiceResponse;
 import com.vkakarla.springboot.exceptionhandling.junits.entities.Person;
-import com.vkakarla.springboot.exceptionhandling.junits.handler.ServiceResponseHandler;
 import com.vkakarla.springboot.exceptionhandling.junits.repository.PersonRepository;
 import com.vkakarla.springboot.exceptionhandling.junits.serviceImpl.PersonService;
 
@@ -47,13 +45,6 @@ public class  PersonControllerTest {
 
 	@MockBean
 	private PersonRepository personRepository;
-	
-	@Autowired
-	ServiceResponseHandler serviceResponseHandler;
-	
-	@Autowired
-	ServiceResponse serviceResponse;
-	
 
 	@Autowired 
 	ObjectMapper objectMapper;
@@ -93,7 +84,7 @@ public class  PersonControllerTest {
 
 		try {
 			Person personresponse = null;
-			ServiceResponse serviceResponse = null;
+			
 
 			Person personActualResponse = null;
 
@@ -104,8 +95,8 @@ public class  PersonControllerTest {
 
 			ResponseEntity<Object> response = personController.getPerson("12345");
 
-			serviceResponse = (ServiceResponse) response.getBody();
-			personActualResponse = (Person) serviceResponse.getData();
+			
+			//personActualResponse = (Person) serviceResponse.getData();
 
 			assertNotNull(response);
 			assertEquals(HttpStatus.OK, response.getStatusCode());

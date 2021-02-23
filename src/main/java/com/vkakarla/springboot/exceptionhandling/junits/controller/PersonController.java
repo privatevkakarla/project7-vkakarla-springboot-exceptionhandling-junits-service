@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vkakarla.springboot.exceptionhandling.junits.dto.ServiceException;
 import com.vkakarla.springboot.exceptionhandling.junits.entities.Person;
-import com.vkakarla.springboot.exceptionhandling.junits.handler.ServiceResponseHandler;
 import com.vkakarla.springboot.exceptionhandling.junits.serviceImpl.PersonService;
 import com.vkakarla.springboot.exceptionhandling.junits.utils.PersonRequestValidationUtil;
 
@@ -22,9 +21,6 @@ public class PersonController {
 	private PersonService personService;
 
 	@Autowired
-	ServiceResponseHandler serviceResponseHandler;
-
-	@Autowired
 	private PersonRequestValidationUtil validationUtil;
 
 	@GetMapping(value = "/person-management/person/{personId}")
@@ -33,7 +29,7 @@ public class PersonController {
 
 		validationUtil.verifyPersonId(personId);
 		Person person = personService.getPersonByPersonId(personId);
-		return serviceResponseHandler.buildSuccessResponseEntity(person, HttpStatus.OK);
+		return new ResponseEntity<Object>(person, HttpStatus.OK);
 
 	}
 
@@ -42,7 +38,7 @@ public class PersonController {
 
 		validationUtil.verifyPersonSSN(ssn);
 		Person person = personService.getPersonBySSN(ssn);
-		return serviceResponseHandler.buildSuccessResponseEntity(person, HttpStatus.OK);
+		return new ResponseEntity<Object>(person, HttpStatus.OK);
 
 	}
 
@@ -50,7 +46,7 @@ public class PersonController {
 	public ResponseEntity<Object> createPerson(@RequestBody  Person person) {
 
 		personService.createPerson(person);
-		return serviceResponseHandler.buildSuccessResponseEntity(person, HttpStatus.OK);
+		return new ResponseEntity<Object>(person, HttpStatus.OK);
 
 	}
 	
